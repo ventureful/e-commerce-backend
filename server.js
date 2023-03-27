@@ -12,7 +12,7 @@ const io = new Server(server, {
   methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 });
 
-const User = require('./models/User');
+const User = require('./Models/User');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
