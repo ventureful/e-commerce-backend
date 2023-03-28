@@ -8,11 +8,11 @@ require('./connection');
 const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server, {
-  cors: 'http://localhost:3001',
+  cors: process.env.REACT_APP_API_URL,
   methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 });
 
-const User = require('./Models/User');
+// const User = require('./Models/User');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
