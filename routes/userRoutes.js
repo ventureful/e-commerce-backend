@@ -1,7 +1,8 @@
 // Define an Express router to handle incoming HTTP requests and require the User model for user data management.
 const router = require('express').Router();
-const User = require('../models/User');
-const Order = require('../models/Order');
+const User = require('../Models/User.js');
+const Order = require('../Models/Order.js');
+
 // Handle a POST request to '/signup' to create a new user.
 router.post('/signup', async (req, res) => {
   const { name, email, password } = req.body; // Extract the name, email, and password from the request body.
@@ -49,19 +50,19 @@ router.get('/:id/orders', async (req, res) => {
 });
 
 // Update user notifications
-router.post('/:id/updateNotifications', async(req, res)=> {
-  const {id} = req.params;
+router.post('/:id/updateNotifications', async (req, res) => {
+  const { id } = req.params;
   try {
     const user = await User.findById(id);
     user.notifications.forEach((notif) => {
-      notif.status = "read"
+      notif.status = 'read';
     });
     user.markModified('notifications');
     await user.save();
     res.status(200).send();
   } catch (e) {
-    res.status(400).send(e.message)
+    res.status(400).send(e.message);
   }
-})
+});
 
 module.exports = router;
