@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const Order = require('../models/Order');
-const User = require('../models/User');
+const Order = require('../Models/Order');
+const User = require('../Models/User');
 
 //creating an order
 router.post('/', async (req, res) => {
